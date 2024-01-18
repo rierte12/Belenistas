@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="event-details">
+        <ul>
+            <li>Evento: {{ event.name }}</li>
+            {% if event.description is defined %}
+                <li>Descripción: {{ event.description }}</li>
+            {% endif %}
+            <li>Ubicacion: {{ event.location }}</li>
+            <li>Inicio: {{ event.humanStart }}</li>
+            <li>Fin: {{ event.humanEnd }}</li>
+        </ul>
+    </div>
+
+    <div id="calendar">
+        <div class="loading"><i class="fa-solid fa-gear fa-spin"></i>Cargando guardias...</div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@latest/dist/locale/es.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.10/index.global.min.js" integrity="sha512-JCQkxdym6GmQ+AFVioDUq8dWaWN6tbKRhRyHvYZPupQ6DxpXzkW106FXS1ORgo/m3gxtt5lHRMqSdm2OfPajtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="{{ asset('js/guard.js') }}"></script>
+{% endblock %}

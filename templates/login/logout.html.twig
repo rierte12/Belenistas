@@ -1,0 +1,15 @@
+{% include 'head.html.twig' %}
+
+<div class="logout">
+    <div class="center-container">
+        <img src="{{ asset('images/logo.webp') }}" alt="Logo de la asociación de belenistas de Pamplona">
+        <h1>Sesión finalizada</h1>
+        <h3>Has cerrado correctamente la sesión</h3>
+        <p>En 5 segundos se te redirigirá a la <a href="http://belenistaspamplona.es">página principal de la asociación</a></p>
+        <a href="/login"><button><i class="fa-solid fa-key"></i>Volver a iniciar sesión</button></a>
+    </div>
+</div>
+{#<meta http-equiv="refresh" content="5; url=http://belenistaspamplona.es">#}
+
+
+{% include 'footer.html.twig' %}

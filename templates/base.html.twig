@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+{% include 'head.html.twig' %}
 
-        {% block javascripts %}
-{% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+{% block nav %}
+    {% include 'navigation.html.twig' %}
+{% endblock %}
+<main id="main">
+    {% if  title is defined %}
+        <h1>{{ title }}</h1>
+    {% endif %}
+    {% block body %}{% endblock %}
+</main>
+{% include 'footer.html.twig' %}
+{% block javascripts %}
+    <script src="{{ asset('js/libs/FormBuilder.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}
+</body>
 </html>

@@ -1,3 +1,329 @@
-body {
-    background-color: skyblue;
+/* Variables */
+:root {
+    --color-primary: #003890;
+    --color-secondary: #004fc0;
 }
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary);
+}
+
+
+/* General */
+body {
+    background-color: #e8e3e3;
+    position: relative;
+    font-family: "Montserrat", sans-serif;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+main {
+    width: 75%;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 2.5% 10vh;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Modal */
+.modal {
+    background-color: #d4d4d4;
+}
+
+/** Botones **/
+i[class^="fa"]:not(button i) {
+    font-size: 1.2em;
+    margin-right: 0.5em;
+    color: var(--color-primary);
+}
+
+
+button, input[type="submit"] {
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-size: 0.9em;
+    padding: 0.7em 1.3em;
+}
+
+button:hover {
+    cursor: pointer;
+    outline: 1px solid white;
+}
+
+button:not(.btn-icono) > i {
+    margin-right: 0.5em;
+    color: white;
+}
+
+li {
+    margin: 10px 0;
+}
+
+
+#full-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    place-content: center;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #3f3f3fc4;
+}
+
+.full-container-inner {
+    position: relative;
+    padding: 20px 50px;
+    width: 50%;
+    border-radius: 5%;
+    background-color: #252323;
+}
+
+#close-full-container {
+    position: absolute;
+    top: -1em;
+    right: -1em;
+    color: white;
+}
+
+#close-full-container::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f057";
+    font-size: 2em;
+    background-color: var(--color-primary);
+    border-radius: 100%;
+}
+/** Formularios **/
+
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+label.required::after {
+    margin-left: 0.2em;
+    content: "*";
+    color: red;
+}
+
+input[type="submit"] {
+    display: block;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="number"], select, textarea, input[type="file"], input[type="datetime-local"] {
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    padding: 0.5em;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+input {
+    box-sizing: border-box;
+    padding-inline: 0;
+}
+
+.loading {
+    display: flex;
+    place-content: center;
+    font-size: 2em;
+}
+
+/** Menu principal **/
+nav.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--color-primary);
+    color: white;
+    margin: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: 1;
+}
+
+nav.main ul {
+    position: absolute;
+    right: 5vw;
+    display: flex;
+    gap: 1vw;
+    justify-content: space-around;
+    list-style: none;
+}
+
+nav.main ul a {
+    color: white;
+    text-decoration: none;
+}
+
+nav.main ul a:hover {
+    font-style: italic;
+}
+
+.logo {
+    position: absolute;
+    left: 5vw;
+    display: flex;
+    flex-direction: row;
+    align-items: inherit;
+    gap: 1.5vw;
+}
+
+.logo img {
+    height: 50px;
+    width: 50px;
+}
+
+/** Login **/
+.login {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../images/baluarte.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+}
+.login > .form-container {
+    background-color: rgba(245, 245, 245, 0.85);
+    box-shadow: #9b9b9b 3px 6px 16px -2px;
+    margin-left: 10%;
+    padding: 2em;
+    border-radius: 15px;
+
+}
+
+.login img, .logout img {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    display: flex;
+    margin: -80px auto auto auto;
+}
+
+/* Logout */
+.logout {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../images/catedral.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logout > .center-container {
+    text-align: center;
+    background-color: rgba(245, 245, 245, 0.85);
+    box-shadow: #9b9b9b 3px 6px 16px -2px;
+    padding: 2em;
+    border-radius: 15px;
+}
+
+
+/* Eventos */
+.event-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #d4d4d4;
+    margin: 5vh auto;
+    border-radius: 15px;
+    padding: 1em 3em;
+    box-shadow: grey 3px 6px 16px -2px;
+}
+
+.event-details {
+    margin-bottom: 50px;
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+
+    thead {
+        background-color: #2b2b2b;
+    }
+
+    a {
+        color: #72aaff;
+    }
+
+    /* Login */
+    .login > .form-container {
+        background-color: rgba(101, 101, 101, 0.85);
+        box-shadow: grey 3px 6px 16px -2px;
+    }
+
+    .logout > .center-container {
+        background-color: rgba(101, 101, 101, 0.85);
+        box-shadow: grey 3px 6px 16px -2px;
+    }
+
+    /* Modal */
+    .modal {
+        background-color: #3f3f3f;
+    }
+
+    /* Botones */
+    button:hover {
+        outline: 1px solid #adabab;
+    }
+
+    /* Eventos */
+    .event-card {
+        background-color: #2b2b2b;
+        box-shadow: rgba(43, 43, 43, 0.88) 3px 6px 16px -2px;
+        color: #fff;
+    }
+}
+
+

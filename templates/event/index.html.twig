@@ -1,19 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EventController!{% endblock %}
-
 {% block body %}
-
-    {% for event in events %}
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ event.name }}</h5>
-                <p class="card-text">{{ event.description }}</p>
-                <a href="{{ path('app_event_show', {'id': event.identifier}) }}" class="btn btn-primary"></a>
+    <div class="toolbar">
+        <button id="new-event"><i class="fa-solid fa-plus"></i>Nuevo evento</button>
+    </div>
+    <div class="event-cards">
+        {% for event in events %}
+            <div class="event-card">
+                <h3 class="event-title">{{ event.name }}</h3>
+                <ul>
+                    <li class="event-desciption">{{ event.description }}</li>
+                    <li class="event-location">Ubicación: {{ event.location }}</li>
+                    <li class="event-start">Inicio: {{ event.humanStart }}</li>
+                    <li class="event-end">Fin: {{ event.humanEnd }}</li>
+                </ul>
+                <a href="{{ path('app_event_show', {'id': event.id}) }}" class="btn btn-primary">
+                    <button><i class="fa-solid fa-user"></i>Ver Guardias</button>
+                </a>
             </div>
-        </div>
-    {% else %}
-        <p>No existen eventos actualmente, prueba a crear uno</p>
-    {% endfor %}
+        {% else %}
+            <p>No existen eventos actualmente, prueba a crear uno</p>
+        {% endfor %}
+   {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/libs/FormBuilder.js') }}"></script>
+    <script src="{{ asset('js/events.js') }}"></script>
 {% endblock %}

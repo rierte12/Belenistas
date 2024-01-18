@@ -3,12 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use App\Service\DateFormattingService;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
-use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
@@ -39,15 +39,9 @@ class Event
         $this->guards = new ArrayCollection();
     }
 
-    public function getId(): ?UuidInterface
+    public function getId(): UuidInterface
     {
         return $this->id;
-    }
-
-    #[SerializedName('hidden')]
-    public function getIdentifier(): string
-    {
-        return $this->id->toString();
     }
 
     public function getName(): string
@@ -92,6 +86,16 @@ class Event
     public function getEnd(): DateTime
     {
         return $this->endDate;
+    }
+
+    public function getHumanStart(): string
+    {
+        return DateFormattingService::convertToHumanString($this->startDate);
+    }
+
+    public function getHumanEnd(): string
+    {
+        return DateFormattingService::convertToHumanString($this->endDate);
     }
 
     public function setEnd(DateTime $endDate): void

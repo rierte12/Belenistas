@@ -1,4 +1,6 @@
 import './bootstrap.js';
+import './js/libs/FormBuilder.js';
+
 /*
  * Welcome to your app's main JavaScript file!
  *
